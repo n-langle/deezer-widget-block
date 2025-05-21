@@ -22,11 +22,11 @@ export const isValidDeezerUrl = ( url ) => {
 }
 
 /**
- * Format the album url
+ * Get the album url
  *
- * @param {string} url - The url to format.
- * @return {string} The formatted url.
+ * @param {string} id - The id of the album.
+ * @return {string} The album url.
  */
-export const formatAlbumUrl = ( url ) => {
-	return url.replace( /\/tracks$/, '' );
+export const getAlbumUrl = ( id ) => {
+	return `https://www.deezer.com/album/${ id }`;
 }

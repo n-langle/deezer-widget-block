@@ -5,7 +5,7 @@
  * @returns {React.ReactElement} The CardTrack component.
  */
 
-import { formatAlbumUrl } from './utils';
+import { getAlbumUrl } from './utils';
 
 export default function CardTrack({ result, setDeezerUrl }) {
 	return (
@@ -22,7 +22,7 @@ export default function CardTrack({ result, setDeezerUrl }) {
 				>{ result.artist.name }</button>
 				<button
 					className="wp-block-deezer-widget__card-album"
-					onClick={ () => setDeezerUrl( formatAlbumUrl( result.album.link ) ) }
+					onClick={ () => setDeezerUrl( getAlbumUrl( result.album.id ) ) }
 				>{ result.album.title }</button>
 			</div>
 		</div>

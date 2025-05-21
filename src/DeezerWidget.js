@@ -9,7 +9,7 @@ export default function DeezerWidget( { deezerUrl, mode, width, height, showTrac
 	const path = url.pathname.split( '/' );
 	const type = path[ path.length - 2 ];
 	const id = path[ path.length - 1 ];
-	let embedUrl = 'https://widget.deezer.com/widget/' + mode + '/' + type + '/' + id;
+	let embedUrl = `https://widget.deezer.com/widget/${ mode }/${ type }/${ id }`;
 
 	if ( type === 'artist' ) {
 		embedUrl = embedUrl + '/top_tracks';
