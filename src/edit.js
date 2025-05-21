@@ -49,10 +49,11 @@ export default function Edit({ attributes, setAttributes }) {
 	}
 
 	const onInputSearchChange = ( value ) => {
-		const url = new URL( window.location.origin + '/wp-json/deezer-widget-block/v1/deezer-search' );
+		const url = new URL( deezerWidgetBlockData.restSearchUrl );
 
 		url.searchParams.set( 'query', value );
 		url.searchParams.set( 'connection', connection );
+		url.searchParams.set( 'rest_key', deezerWidgetBlockData.restKey );
 
 		fetch( url )
 			.then( response => response.json() )
@@ -92,14 +93,14 @@ export default function Edit({ attributes, setAttributes }) {
 			<InspectorControls>
 				<PanelBody title={ __( 'Deezer Widget', 'deezer-widget-block' ) } initialOpen={ true }>
 					<RadioControl
-						label={ __( 'Mode', 'deezer-widget-block' ) }
-						selected={ attributes.mode }
+						label={ __( 'Theme', 'deezer-widget-block' ) }
+						selected={ attributes.theme }
 						options={ [
 							{ label: __( 'Auto', 'deezer-widget-block' ), value: 'auto' },
 							{ label: __( 'Dark', 'deezer-widget-block' ), value: 'dark' },
 							{ label: __( 'Light', 'deezer-widget-block' ), value: 'light' },
 						] }
-						onChange={ ( mode ) => setAttributes( { mode } ) }
+						onChange={ ( theme ) => setAttributes( { theme } ) }
 					/>
 					<RadioControl
 						label={ __( 'Show tracklist', 'deezer-widget-block' ) }
@@ -109,15 +110,6 @@ export default function Edit({ attributes, setAttributes }) {
 							{ label: __( 'No', 'deezer-widget-block' ), value: 'no' },
 						] }
 						onChange={ ( showTracklist ) => setAttributes( { showTracklist } ) }
-					/>
-					<RangeControl
-						label={ __( 'Width', 'deezer-widget-block' ) }
-						value={ attributes.width }
-						onChange={ ( width ) => setAttributes( { width } ) }
-						min={ 210 }
-						max={ 1000 }
-						step={ 10 }
-						allowReset={ true }
 					/>
 					<RangeControl
 						label={ __( 'Height', 'deezer-widget-block' ) }
@@ -189,9 +181,11 @@ export default function Edit({ attributes, setAttributes }) {
 									value={ attributes.deezerUrl }
 									onChange={ onInputDeezerUrlChange }
 								/>
-								{ attributes.deezerUrl && !isValidDeezerUrl( attributes.deezerUrl ) && (
-									<p className="wp-block-deezer-widget__form-error">{ __( 'Invalid Deezer url', 'deezer-widget-block' ) }</p>
-								) }
+								{ attributes.deezerUrl && !isValidDeezerUrl( attributes.deezerUrl ) ?
+									<p className="wp-block-deezer-widget__form-instruction">{ __( 'Invalid Deezer url', 'deezer-widget-block' ) }</p>
+									:
+									<p className="wp-block-deezer-widget__form-instruction">{ __( 'Supported contents: Album, Playlist, Track, Artist, Podcast, Episode', 'deezer-widget-block' ) }</p>
+								}
 							</div>
 							<div className="wp-block-deezer-widget__form-row">
 								<button

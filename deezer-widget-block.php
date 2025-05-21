@@ -3,7 +3,7 @@
  * Plugin Name:       Deezer Widget Block
  * Description:       Deezer widget block for Gutenberg
  * Version:           0.1.0
- * Requires at least: 6.7
+ * Requires at least: 6.4
  * Requires PHP:      7.4
  * Author:            n-langle
  * Author URI:        https://github.com/n-langle
@@ -34,7 +34,17 @@ class DeezerWidgetBlock {
 	 * Initialize the block
 	 */
 	public function init(): void {
-		register_block_type_from_metadata( __DIR__ . '/build' );
+		register_block_type( __DIR__ . '/build' );
+
+		wp_add_inline_script(
+			'n-langle-deezer-widget-block-editor-script',
+			'const deezerWidgetBlockData = ' . json_encode(
+				[
+					'restSearchUrl' => rest_url( '/deezer-widget-block/v1/search' ),
+				]
+			) . ';',
+			'before'
+		);
 	}
 
 	/**
@@ -43,19 +53,19 @@ class DeezerWidgetBlock {
 	public function rest_api_init(): void {
 		register_rest_route(
 			'deezer-widget-block/v1',
-			'/deezer-search',
+			'/search',
 			[
-				'methods' => 'GET',
-				'callback' => [ $this, 'search' ],
+				'methods'             => 'GET',
+				'callback'            => [ $this, 'search' ],
 				'permission_callback' => '__return_true',
-				'args' => [
-					'query' => [
-						'type' => 'string',
+				'args'                => [
+					'query'      => [
+						'type'     => 'string',
 						'required' => true,
 					],
 					'connection' => [
-						'type' => 'string',
-						'required' => false,
+						'type'              => 'string',
+						'required'          => false,
 						'validate_callback' => function ( $value ) {
 							$allowed_values = [
 								'',
@@ -83,15 +93,13 @@ class DeezerWidgetBlock {
 	public function search( WP_REST_Request $request ): array {
 		$query      = $request->get_param( 'query' );
 		$connection = $request->get_param( 'connection' );
-
-		$args = [
+		$args       = [
 			'headers' => [
 				'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 			]
 		];
-	
-		$url      = 'https://api.deezer.com/search' . ( $connection ? '/' . $connection : '' ) . '?q=' . urlencode( $query );
-		$response = wp_remote_get( $url, $args );
+		$url        = 'https://api.deezer.com/search' . ( $connection ? '/' . $connection : '' ) . '?q=' . urlencode( $query );
+		$response   = wp_remote_get( $url, $args );
 		
 		if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
 			return [

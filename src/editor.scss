@@ -7,12 +7,19 @@
 	$input-border-radius: 8px;
 	$input-height: 48px;
 	$input-bg-color: #3a393d;
+	$instruction-color: #a9a6aa;
+	$button-color: #f5f2f8;
+	$button-bg-color: #a238ff;
+	$button-hover-bg-color: #b560ff;
+	$widget-bg-color: #1b191f;
+	$widget-color: #fdfcfe;
+	$search-results-bg-color: #0f0d13;
 
 	box-sizing: border-box;
 	padding: 48px 32px;
 	border-radius: 8px;
-	background: #1b191f;
-	color: #fdfcfe;
+	background: $widget-bg-color;
+	color: $widget-color;
 
 	.deezer-horizontal-lockup {
 		display: block;
@@ -29,16 +36,19 @@
 	}
 
 	&__form-row {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-		gap: 24px;
 		margin-bottom: 24px;
 
+		&:first-child {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 24px;
+		}
+
 		&:last-child {
-			margin-top: 48px;
+			margin-top: 32px;
 			margin-bottom: 0;
+			text-align: center;
 		}
 	}
 
@@ -57,7 +67,7 @@
 	}
 
 	.components-select-control {
-		min-width: 200px;
+		min-width: 100px;
 		color: inherit;
 
 		.components-input-control__container {
@@ -87,6 +97,10 @@
 				background: $input-bg-color;
 				border: none;
 				border-radius: $input-border-radius;
+
+				&::placeholder {
+					color: rgba( $input-color, .5 );
+				}
 			}
 
 			.components-input-control__backdrop {
@@ -95,10 +109,10 @@
 		}
 	}
 
-	&__form-error {
+	&__form-instruction {
 		width: 100%;
-		margin: -16px 0 0;
-		color: #a9a6aa;
+		margin: 8px 0 0;
+		color: $instruction-color;
 		font-size: 14px;
 		line-height: 1.2em;
 	}
@@ -108,15 +122,15 @@
 		padding: 0 24px;
 		font-size: 16px;
 		font-weight: 700;
-		color: #f5f2f8;
-		background-color: #a238ff;
+		color: $button-color;
+		background-color: $button-bg-color;
 		border-radius: $input-border-radius;
 		transition: background-color .2s;
 
 		&:hover,
 		&:focus,
 		&:active {
-			background-color: #b560ff;
+			background-color: $button-hover-bg-color;
 		}
 	}
 
@@ -141,7 +155,7 @@
 		font-size: 16px;
 		line-height: 1.2em;
 		overflow: auto;
-		background: #0f0d13;
+		background: $search-results-bg-color;
 		border-radius: 8px;
 
 		li {
@@ -213,6 +227,7 @@
 	}
 
 	iframe {
+		width: 100%;
 		vertical-align: bottom;
 		border: none;
 		outline: none;

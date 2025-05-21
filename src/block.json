@@ -20,13 +20,9 @@
 			"type": "string",
 			"default": ""
 		},
-		"mode": {
+		"theme": {
 			"type": "string",
 			"default": "auto"
-		},
-		"width": {
-			"type": "string",
-			"default": ""
 		},
 		"height": {
 			"type": "string",
