@@ -58,12 +58,10 @@ class DeezerWidgetBlock {
 								'',
 								'album',
 								'artist',
-								'history',
 								'playlist',
 								'podcast',
 								'radio',
 								'track',
-								'user'
 							];
 
 							return in_array( $value, $allowed_values, true );

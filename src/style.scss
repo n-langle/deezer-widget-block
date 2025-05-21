@@ -1,12 +1,10 @@
 /**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
+ * Style
  */
-
-.wp-block-create-block-deezer-widget-block {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+ .wp-block-deezer-widget {
+	iframe {
+		vertical-align: bottom;
+		border: none;
+		outline: none;
+	}
 }

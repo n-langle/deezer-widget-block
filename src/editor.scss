@@ -1,9 +1,6 @@
 /**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
+ * Editor
  */
-
 .wp-block-deezer-widget {
 	$el: &;
 	$input-color: #f5f2f8;
@@ -36,6 +33,7 @@
 		margin-bottom: 24px;
 
 		&:last-child {
+			margin-top: 48px;
 			margin-bottom: 0;
 		}
 	}
@@ -47,6 +45,7 @@
 	button {
 		padding: 0;
 		margin: 0;
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 		color: inherit;
 		background: transparent;
 		border: none;
@@ -167,5 +166,29 @@
 		&:active {
 			background-color: #b560ff;
 		}
+	}
+
+	// ----
+	// not selected
+	// ----
+	&:not(.is-selected) {
+		iframe {
+			pointer-events: none;
+		}
+	}
+
+	// ----
+	// preview
+	// ----
+	&:has(iframe) {
+		padding: 0;
+		background: transparent;
+		border-radius: 0;
+	}
+
+	iframe {
+		vertical-align: bottom;
+		border: none;
+		outline: none;
 	}
 }

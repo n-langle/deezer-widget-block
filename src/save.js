@@ -9,8 +9,8 @@ import { useBlockProps } from '@wordpress/block-editor';
 /**
  * Internal dependencies
  */
-import { setBlockClassName } from './utils';
-import { DeezerHorizontalLockup } from './Icons';
+import { setBlockClassName, isValidDeezerUrl } from './utils';
+import DeezerWidget from './DeezerWidget';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -21,14 +21,20 @@ import { DeezerHorizontalLockup } from './Icons';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save( { attributes } ) {
 	const blockProps = useBlockProps.save();
 
 	setBlockClassName( blockProps );
 
 	return (
-		<div { ...blockProps }>
-			<DeezerHorizontalLockup />
-		</div>
+		<>
+		{ isValidDeezerUrl( attributes.deezerUrl ) ?
+			<div { ...blockProps }>
+				<DeezerWidget { ...attributes } />
+			</div>
+			:
+			''
+		}
+		</>
 	);
 }

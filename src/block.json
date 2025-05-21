@@ -19,6 +19,22 @@
 		"deezerUrl": {
 			"type": "string",
 			"default": ""
+		},
+		"mode": {
+			"type": "string",
+			"default": "auto"
+		},
+		"width": {
+			"type": "string",
+			"default": ""
+		},
+		"height": {
+			"type": "string",
+			"default": ""
+		},
+		"showTracklist": {
+			"type": "string",
+			"default": "yes"
 		}
 	},
 	"textdomain": "deezer-widget-block",
