@@ -18,6 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+/**
+ * Deezer Widget Block class
+ */
 class DeezerWidgetBlock {
 	/**
 	 * Constructor
@@ -60,7 +63,6 @@ class DeezerWidgetBlock {
 								'artist',
 								'playlist',
 								'podcast',
-								'radio',
 								'track',
 							];
 
@@ -118,4 +120,7 @@ class DeezerWidgetBlock {
 	}
 }
 
+/**
+ * Initialize the plugin
+ */
 new DeezerWidgetBlock();

@@ -2,8 +2,8 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { __experimentalInputControl as InputControl, PanelBody, RadioControl, RangeControl, SelectControl } from '@wordpress/components';
+import { BlockControls, InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import { __experimentalInputControl as InputControl, PanelBody, RadioControl, RangeControl, SelectControl, ToolbarGroup } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 /**
@@ -13,6 +13,20 @@ import './editor.scss';
 import { isValidDeezerUrl, setBlockClassName } from './utils';
 import { DeezerHorizontalLockup } from './Icons';
 import DeezerWidget from './DeezerWidget';
+import CardArtist from './CardArtist';
+import CardAlbum from './CardAlbum';
+import CardCommon from './CardCommon';
+import CardTrack from './CardTrack';
+
+/**
+ * cards
+ */
+const cards = {
+	artist: CardArtist,
+	album: CardAlbum,
+	common: CardCommon,
+	track: CardTrack,
+};
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -27,7 +41,12 @@ export default function Edit({ attributes, setAttributes }) {
 	const [ searchQuery, setSearchQuery ] = useState( '' );
 	const [ searchResults, setSearchResults ] = useState( [] );
 	const [ connection, setConnection ] = useState( '' );
-	const [ isEditing, setIsEditing ] = useState( false );
+	const [ isEditing, setIsEditing ] = useState( !isValidDeezerUrl( attributes.deezerUrl ) );
+
+	const getCard = ( result ) => {
+		const Card = cards[ result.type ] || cards.common;
+		return <Card result={ result } setDeezerUrl={ setDeezerUrl } />;
+	}
 
 	const onInputSearchChange = ( value ) => {
 		const url = new URL( window.location.origin + '/wp-json/deezer-widget-block/v1/deezer-search' );
@@ -51,14 +70,10 @@ export default function Edit({ attributes, setAttributes }) {
 	}
 
 	const onInputDeezerUrlChange = ( value ) => {
-		if ( !isValidDeezerUrl( value ) ) {
-			// show message to user
-		}
-
 		setAttributes( { deezerUrl: value } );
 	}
 
-	const setInputDeezerUrlValue = ( value ) => {
+	const setDeezerUrl = ( value ) => {
 		setSearchResults( [] );
 		setIsEditing( false );
 		setAttributes( { deezerUrl: value } );
@@ -66,13 +81,11 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const onFormSubmit = () => {
 		if ( isValidDeezerUrl( attributes.deezerUrl ) ) {
-			console.log( 'onFormSubmit' );
+			setIsEditing( false );
 		}
 	}
 
 	setBlockClassName( blockProps );
-
-	console.log('isEditing', isEditing, 'isValidDeezerUrl', !isValidDeezerUrl( attributes.deezerUrl ) );
 
 	return (
 		<>
@@ -117,6 +130,19 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</PanelBody>
 			</InspectorControls>
+			{ !isEditing &&
+				<BlockControls key="toolbar">
+					<ToolbarGroup
+						controls={[
+							{
+								icon: 'edit',
+								title: __( 'Edit', 'deezer-widget-block'),
+								onClick: () => setIsEditing( true ),
+							},
+						]}
+					/>
+				</BlockControls>
+			}
 			<div { ...blockProps }>
 				{ ( isEditing || !isValidDeezerUrl( attributes.deezerUrl ) ) ?
 					<>
@@ -127,12 +153,11 @@ export default function Edit({ attributes, setAttributes }) {
 									label={ __( 'Filter', 'deezer-widget-block' ) }
 									value={ connection }
 									options={ [
-										{ label: __( 'None', 'deezer-widget-block' ), value: '' },
+										{ label: __( 'Default', 'deezer-widget-block' ), value: '' },
 										{ label: __( 'Album', 'deezer-widget-block' ), value: 'album' },
 										{ label: __( 'Artist', 'deezer-widget-block' ), value: 'artist' },
 										{ label: __( 'Playlist', 'deezer-widget-block' ), value: 'playlist' },
 										{ label: __( 'Podcast', 'deezer-widget-block' ), value: 'podcast' },
-										{ label: __( 'Radio', 'deezer-widget-block' ), value: 'radio' },
 										{ label: __( 'Track', 'deezer-widget-block' ), value: 'track' },
 									] }
 									onChange={ onConnectionChange }
@@ -150,18 +175,7 @@ export default function Edit({ attributes, setAttributes }) {
 										<ul className="wp-block-deezer-widget__search-results">
 											{ searchResults.data.map( result => (
 												<li key={ result.id }>
-													<img src={ result.album.cover_small } alt={ result.album.title } />
-													<div>
-														<button
-															onClick={ () => setInputDeezerUrlValue( result.link ) }
-														>{ result.title }</button>
-														<button
-															onClick={ () => setInputDeezerUrlValue( result.artist.link ) }
-														>{ result.artist.name }</button>
-														<button
-															onClick={ () => setInputDeezerUrlValue( result.album.link ) }
-														>{ result.album.title }</button>
-													</div>
+													{ getCard( result ) }
 												</li>
 											) ) }
 										</ul>
@@ -175,7 +189,7 @@ export default function Edit({ attributes, setAttributes }) {
 									value={ attributes.deezerUrl }
 									onChange={ onInputDeezerUrlChange }
 								/>
-								{ !isValidDeezerUrl( attributes.deezerUrl ) && (
+								{ attributes.deezerUrl && !isValidDeezerUrl( attributes.deezerUrl ) && (
 									<p className="wp-block-deezer-widget__form-error">{ __( 'Invalid Deezer url', 'deezer-widget-block' ) }</p>
 								) }
 							</div>

@@ -17,6 +17,16 @@ export const setBlockClassName = ( blockProps ) => {
  */
 export const isValidDeezerUrl = ( url ) => {
 	// podcast url identifier is "show"
-	const urlPattern = new RegExp('^https?:\/\/(www\.)?deezer\.com\/([a-z]{2}\/)?(album|artist|playlist|show|radio|track)\/([0-9]+)$');
+	const urlPattern = new RegExp('^https?:\/\/(www\.)?deezer\.com\/([a-z]{2}\/)?(album|artist|playlist|show|track)\/([0-9]+)$');
 	return urlPattern.test( url );
+}
+
+/**
+ * Format the album url
+ *
+ * @param {string} url - The url to format.
+ * @return {string} The formatted url.
+ */
+export const formatAlbumUrl = ( url ) => {
+	return url.replace( /\/tracks$/, '' );
 }
