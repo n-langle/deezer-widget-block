@@ -41,6 +41,7 @@ class DeezerWidgetBlock {
 			'const deezerWidgetBlockData = ' . json_encode(
 				[
 					'restSearchUrl' => rest_url( '/deezer-widget-block/v1/search' ),
+					'restKey'       => $this->get_rest_key(),
 				]
 			) . ';',
 			'before'
@@ -57,7 +58,9 @@ class DeezerWidgetBlock {
 			[
 				'methods'             => 'GET',
 				'callback'            => [ $this, 'search' ],
-				'permission_callback' => '__return_true',
+				'permission_callback' => function ( $request ) {
+					return $request->get_param( 'rest_key' ) === $this->get_rest_key();
+				},
 				'args'                => [
 					'query'      => [
 						'type'     => 'string',
@@ -79,9 +82,31 @@ class DeezerWidgetBlock {
 							return in_array( $value, $allowed_values, true );
 						},
 					],
+					'rest_key'   => [
+						'type'     => 'string',
+						'required' => true,
+					],
 				],
 			]
 		);
+	}
+
+	/**
+	 * Get the REST key
+	 *
+	 * @return string
+	 */
+	public function get_rest_key(): string {
+		$rest_key = get_transient( 'deezer_widget_block_rest_key' );
+
+		if ( false !== $rest_key ) {
+			return $rest_key;
+		}
+
+		$rest_key = sha1( uniqid() );
+		set_transient( 'deezer_widget_block_rest_key', $rest_key, WEEK_IN_SECONDS );
+
+		return $rest_key;
 	}
 
 	/**
@@ -102,11 +127,11 @@ class DeezerWidgetBlock {
 		$response   = wp_remote_get( $url, $args );
 		
 		if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
-			return [
-				'data'  => [],
-				'error' => $response->get_error_message(),
-				'url'   => $url,
-			];
+			return rest_ensure_response( [
+				'data'       => [],
+				'error'      => $response->get_error_message(),
+				'deezer_url' => $url,
+			] );
 		}
 	
 		$body = wp_remote_retrieve_body( $response );
@@ -114,17 +139,17 @@ class DeezerWidgetBlock {
 		try {
 			$data = json_decode( $body, true, 512, JSON_THROW_ON_ERROR );
 		} catch ( \Exception $e ) {
-			return [
-				'data'  => [],
-				'error' => $e->getMessage(),
-				'url'   => $url,
-			];
+			return rest_ensure_response( [
+				'data'       => [],
+				'error'      => $e->getMessage(),
+				'deezer_url' => $url,
+			] );
 		}
 
-		$data['error'] = '';
-		$data['url']   = $url;
+		$data['error']      = '';
+		$data['deezer_url'] = $url;
 	
-		return $data;
+		return rest_ensure_response( $data );
 	}
 }
 
