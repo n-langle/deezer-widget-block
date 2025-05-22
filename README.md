@@ -1,12 +1,6 @@
 # Deezer Widget Block
-Contributors:      n-langle
-Tags:              block, deezer, widget, audio
-Tested up to:      6.8
-Stable tag:        0.1.0
-License:           GPL-2.0-or-later
-License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-A WordPress block for embedding Deezer music players into your content. Supports albums, playlists, tracks, artists and podcasts.
+![ Deezer Widget Block ](https://github.com/n-langle/deezer-widget-block/blob/develop/.wordpress-org/banner-1544x500.png)
 
 ## Description
 
