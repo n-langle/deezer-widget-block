@@ -1,5 +1,6 @@
 === Deezer Widget Block ===
 Contributors:      n-langle
+Repository:        https://github.com/n-langle/deezer-widget-block
 Tags:              block, deezer, widget, audio
 Tested up to:      6.8
 Stable tag:        0.1.0
