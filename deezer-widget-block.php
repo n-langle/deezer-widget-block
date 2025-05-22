@@ -7,6 +7,7 @@
  * Requires PHP:      7.4
  * Author:            n-langle
  * Author URI:        https://github.com/n-langle
+ * Repository:        https://github.com/n-langle/deezer-widget-block
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       deezer-widget-block

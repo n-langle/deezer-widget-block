@@ -1,8 +1,9 @@
 {
 	"name": "deezer-widget-block",
 	"version": "0.1.0",
-	"description": "Example block scaffolded with Create Block tool.",
-	"author": "The WordPress Contributors",
+	"description": "Deezer Widget Block",
+	"author": "Nicolas Langle",
+	"repository": "https://github.com/n-langle/deezer-widget-block",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
