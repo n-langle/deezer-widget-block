@@ -26,7 +26,7 @@ import { DeezerSymbol } from './Icons';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType( metadata.name, {
+registerBlockType(metadata.name, {
 	/**
 	 * @see ./edit.js
 	 */
@@ -41,4 +41,4 @@ registerBlockType( metadata.name, {
 	 * Icon
 	 */
 	icon: DeezerSymbol,
-} );
+});
