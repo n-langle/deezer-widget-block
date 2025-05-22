@@ -6,6 +6,8 @@
 
 /.distignore export-ignore
 /.gitattributes export-ignore
+/.editorconfig export-ignore
+/.eslintrc export-ignore
 /.gitignore export-ignore
 /package.json export-ignore
 /README.md export-ignore
