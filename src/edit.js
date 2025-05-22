@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls, InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { __experimentalInputControl as InputControl, PanelBody, RadioControl, RangeControl, SelectControl, ToolbarGroup } from '@wordpress/components';
+import { PanelBody, RadioControl, RangeControl, SelectControl, TextControl, ToolbarGroup } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 /**
@@ -160,7 +160,7 @@ export default function Edit({ attributes, setAttributes }) {
 									__nextHasNoMarginBottom
 								/>
 								<div className="wp-block-deezer-widget__form-search">
-									<InputControl
+									<TextControl
 										label={__('Search', 'deezer-widget-block')}
 										placeholder={__('Rick Astley', 'deezer-widget-block')}
 										value={searchQuery}
@@ -176,7 +176,7 @@ export default function Edit({ attributes, setAttributes }) {
 								</div>
 							</div>
 							<div className="wp-block-deezer-widget__form-row">
-								<InputControl
+								<TextControl
 									label={__('Deezer url', 'deezer-widget-block')}
 									placeholder={__('https://www.deezer.com/us/artist/6160', 'deezer-widget-block')}
 									value={attributes.deezerUrl}

@@ -23,5 +23,5 @@ export default function DeezerWidget({ deezerUrl, theme, height, showTracklist }
 		embedUrl = embedUrl + '?tracklist=false';
 	}
 
-	return <iframe title="deezer-widget" src={embedUrl} height={height || '300px'} allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>;
+	return <iframe title="deezer-widget" src={embedUrl} height={height || '300px'} allow="encrypted-media; clipboard-write"></iframe>;
 }
