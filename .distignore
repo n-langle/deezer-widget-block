@@ -6,6 +6,7 @@
 
 .distignore
 .editorconfig
+.eslintrc
 .gitattributes
 .gitignore
 .wp-env.json
