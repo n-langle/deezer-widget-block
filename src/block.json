@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "n-langle/deezer-widget-block",
+	"version": "0.1.0",
+	"title": "Deezer",
+	"category": "widgets",
+	"description": "Deezer widget block for Gutenberg",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"deezerUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"theme": {
+			"type": "string",
+			"default": "auto"
+		},
+		"height": {
+			"type": "string",
+			"default": ""
+		},
+		"showTracklist": {
+			"type": "string",
+			"default": "yes"
+		}
+	},
+	"textdomain": "deezer-widget-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
