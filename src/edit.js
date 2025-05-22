@@ -64,6 +64,8 @@ export default function Edit({ attributes, setAttributes }) {
 			.then((data) => {
 				setSearchResults(data);
 			});
+
+		setSearchQuery(value);
 	};
 
 	const onConnectionChange = (value) => {

@@ -35,5 +35,20 @@ Yes.
 
 ## Changelog
 
+### 0.1.1
+* Fix copyright and search field
+
 ### 0.1.0
 * Release
+
+## External services
+
+This plugin connects to the [Deezer Search API](https://developers.deezer.com/api/search) to retrieve data.
+This API will be fetch via the WordPress REST API and it will send the following information:
+* your requested terms
+
+This service is provided by the [Deezer API](https://developers.deezer.com/api).
+
+### Credits
+This plugin uses the Deezer API and Deezer logo but is not endorsed or certified by Deezer.
+[deezer.com](https://www.deezer.com)
