@@ -23,17 +23,24 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class DeezerWidgetBlock {
 	/**
+	 * Instance
+	 *
+	 * @var self
+	 */
+	private static $instance = null;
+
+	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		add_action( 'init', [ $this, 'init' ] );
+		add_action( 'init', [ $this, 'register_deezer_widget_block' ] );
 		add_action( 'rest_api_init', [ $this, 'rest_api_init' ] );
 	}
 
 	/**
-	 * Initialize the block
+	 * Register the block
 	 */
-	public function init(): void {
+	public function register_deezer_widget_block(): void {
 		register_block_type( __DIR__ . '/build' );
 
 		wp_add_inline_script(
@@ -113,9 +120,9 @@ class DeezerWidgetBlock {
 	 * Search
 	 *
 	 * @param WP_REST_Request $request
-	 * @return array
+	 * @return WP_REST_Response
 	 */
-	public function search( WP_REST_Request $request ): array {
+	public function search( WP_REST_Request $request ): \WP_REST_Response {
 		$query      = $request->get_param( 'query' );
 		$connection = $request->get_param( 'connection' );
 		$args       = [
@@ -151,9 +158,17 @@ class DeezerWidgetBlock {
 	
 		return rest_ensure_response( $data );
 	}
+
+	public static function get_instance(): self {
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
 }
 
 /**
  * Initialize the plugin
  */
-new DeezerWidgetBlock();
+DeezerWidgetBlock::get_instance();
