@@ -198,6 +198,7 @@ export default function Edit({ attributes, setAttributes }) {
 									{__('Embed', 'deezer-widget-block')}
 								</button>
 							</div>
+							<p className="wp-block-deezer-widget__mention">{__('This block uses the Deezer API and Deezer logo but is not endorsed or certified by Deezer.', 'deezer-widget-block')}</p>
 						</div>
 					</>
 				) : (
