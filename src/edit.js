@@ -57,9 +57,12 @@ export default function Edit({ attributes, setAttributes }) {
 
 		url.searchParams.set('query', value);
 		url.searchParams.set('connection', connection);
-		url.searchParams.set('rest_key', deezerWidgetBlockData.restKey);
 
-		fetch(url)
+		fetch(url, {
+			headers: {
+				'X-WP-Nonce': deezerWidgetBlockData.nonce,
+			},
+		})
 			.then((response) => response.json())
 			.then((data) => {
 				setSearchResults(data);
@@ -195,6 +198,7 @@ export default function Edit({ attributes, setAttributes }) {
 									{__('Embed', 'deezer-widget-block')}
 								</button>
 							</div>
+							<p className="wp-block-deezer-widget__mention">{__('This block uses the Deezer API and Deezer logo but is not endorsed or certified by Deezer.', 'deezer-widget-block')}</p>
 						</div>
 					</>
 				) : (

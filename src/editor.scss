@@ -16,7 +16,7 @@
 	$search-results-bg-color: #0f0d13;
 
 	box-sizing: border-box;
-	padding: 48px 32px;
+	padding: 48px 32px 16px;
 	border-radius: 8px;
 	background: $widget-bg-color;
 	color: $widget-color;
@@ -45,7 +45,7 @@
 			gap: 24px;
 		}
 
-		&:last-child {
+		&:nth-last-child(2) {
 			margin-top: 32px;
 			margin-bottom: 0;
 			text-align: center;
@@ -132,6 +132,14 @@
 		&:active {
 			background-color: $button-hover-bg-color;
 		}
+	}
+
+	&__mention {
+		margin: 24px 0 0;
+		color: $instruction-color;
+		font-size: 9px;
+		line-height: 1.2;
+		text-align: center;
 	}
 
 	// ----
