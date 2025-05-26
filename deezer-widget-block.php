@@ -49,7 +49,7 @@ class DeezerWidgetBlock {
 			'const deezerWidgetBlockData = ' . json_encode(
 				[
 					'restSearchUrl' => rest_url( '/deezer-widget-block/v1/search' ),
-					'restKey'       => $this->get_rest_key(),
+					'nonce'         => wp_create_nonce( 'wp_rest' ),
 				]
 			) . ';',
 			'before'
@@ -67,7 +67,7 @@ class DeezerWidgetBlock {
 				'methods'             => 'GET',
 				'callback'            => [ $this, 'search' ],
 				'permission_callback' => function ( $request ) {
-					return $request->get_param( 'rest_key' ) === $this->get_rest_key();
+					return current_user_can( 'edit_posts' );
 				},
 				'args'                => [
 					'query'      => [
@@ -90,31 +90,9 @@ class DeezerWidgetBlock {
 							return in_array( $value, $allowed_values, true );
 						},
 					],
-					'rest_key'   => [
-						'type'     => 'string',
-						'required' => true,
-					],
 				],
 			]
 		);
-	}
-
-	/**
-	 * Get the REST key
-	 *
-	 * @return string
-	 */
-	public function get_rest_key(): string {
-		$rest_key = get_transient( 'deezer_widget_block_rest_key' );
-
-		if ( false !== $rest_key ) {
-			return $rest_key;
-		}
-
-		$rest_key = sha1( uniqid() );
-		set_transient( 'deezer_widget_block_rest_key', $rest_key, WEEK_IN_SECONDS );
-
-		return $rest_key;
 	}
 
 	/**

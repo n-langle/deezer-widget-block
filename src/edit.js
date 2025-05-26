@@ -57,9 +57,12 @@ export default function Edit({ attributes, setAttributes }) {
 
 		url.searchParams.set('query', value);
 		url.searchParams.set('connection', connection);
-		url.searchParams.set('rest_key', deezerWidgetBlockData.restKey);
 
-		fetch(url)
+		fetch(url, {
+			headers: {
+				'X-WP-Nonce': deezerWidgetBlockData.nonce,
+			},
+		})
 			.then((response) => response.json())
 			.then((data) => {
 				setSearchResults(data);
