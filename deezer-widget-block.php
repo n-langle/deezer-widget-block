@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Deezer Widget Block
  * Description:       Deezer widget block for Gutenberg
- * Version:           0.1.0
+ * Version:           0.1.3
  * Requires at least: 6.4
  * Requires PHP:      7.4
  * Author:            nlangle
