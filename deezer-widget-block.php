@@ -5,7 +5,7 @@
  * Version:           0.1.0
  * Requires at least: 6.4
  * Requires PHP:      7.4
- * Author:            n-langle
+ * Author:            nlangle
  * Author URI:        https://github.com/n-langle
  * Repository:        https://github.com/n-langle/deezer-widget-block
  * License:           GPL-2.0-or-later
@@ -45,7 +45,7 @@ class DeezerWidgetBlock {
 		register_block_type( __DIR__ . '/build' );
 
 		wp_add_inline_script(
-			'n-langle-deezer-widget-block-editor-script',
+			'nlangle-deezer-widget-block-editor-script',
 			'const deezerWidgetBlockData = ' . json_encode(
 				[
 					'restSearchUrl' => rest_url( '/deezer-widget-block/v1/search' ),
