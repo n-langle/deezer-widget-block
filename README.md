@@ -35,6 +35,12 @@ Yes.
 
 ## Changelog
 
+### 0.1.3
+* Fix external service documentation, cookie and local storage disclosure, variable escaping.
+
+### 0.1.2
+* Fix nonce control
+
 ### 0.1.1
 * Fix copyright and search field
 
