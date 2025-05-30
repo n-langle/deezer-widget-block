@@ -1,8 +1,8 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "n-langle/deezer-widget-block",
-	"version": "0.1.0",
+	"name": "nlangle/deezer-widget-block",
+	"version": "0.1.3",
 	"title": "Deezer",
 	"category": "widgets",
 	"description": "Deezer widget block for Gutenberg",

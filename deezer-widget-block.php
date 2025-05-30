@@ -5,7 +5,7 @@
  * Version:           0.1.0
  * Requires at least: 6.4
  * Requires PHP:      7.4
- * Author:            n-langle
+ * Author:            nlangle
  * Author URI:        https://github.com/n-langle
  * Repository:        https://github.com/n-langle/deezer-widget-block
  * License:           GPL-2.0-or-later
@@ -45,10 +45,10 @@ class DeezerWidgetBlock {
 		register_block_type( __DIR__ . '/build' );
 
 		wp_add_inline_script(
-			'n-langle-deezer-widget-block-editor-script',
-			'const deezerWidgetBlockData = ' . json_encode(
+			'nlangle-deezer-widget-block-editor-script',
+			'const deezerWidgetBlockData = ' . wp_json_encode(
 				[
-					'restSearchUrl' => rest_url( '/deezer-widget-block/v1/search' ),
+					'restSearchUrl' => esc_url( rest_url( '/deezer-widget-block/v1/search' ) ),
 					'nonce'         => wp_create_nonce( 'wp_rest' ),
 				]
 			) . ';',
@@ -102,21 +102,21 @@ class DeezerWidgetBlock {
 	 * @return WP_REST_Response
 	 */
 	public function search( WP_REST_Request $request ): \WP_REST_Response {
-		$query      = $request->get_param( 'query' );
-		$connection = $request->get_param( 'connection' );
+		$query      = sanitize_text_field( $request->get_param( 'query' ) );
+		$connection = sanitize_text_field( $request->get_param( 'connection' ) );
 		$args       = [
 			'headers' => [
 				'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 			]
 		];
-		$url        = 'https://api.deezer.com/search' . ( $connection ? '/' . $connection : '' ) . '?q=' . urlencode( $query );
+		$url        = esc_url_raw( 'https://api.deezer.com/search' . ( $connection ? '/' . $connection : '' ) . '?q=' . urlencode( $query ) );
 		$response   = wp_remote_get( $url, $args );
 		
 		if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
 			return rest_ensure_response( [
 				'data'       => [],
-				'error'      => $response->get_error_message(),
-				'deezer_url' => $url,
+				'error'      => esc_html( $response->get_error_message() ),
+				'deezer_url' => esc_url( $url ),
 			] );
 		}
 	
@@ -127,13 +127,13 @@ class DeezerWidgetBlock {
 		} catch ( \Exception $e ) {
 			return rest_ensure_response( [
 				'data'       => [],
-				'error'      => $e->getMessage(),
-				'deezer_url' => $url,
+				'error'      => esc_html( $e->getMessage() ),
+				'deezer_url' => esc_url( $url ),
 			] );
 		}
 
 		$data['error']      = '';
-		$data['deezer_url'] = $url;
+		$data['deezer_url'] = esc_url( $url );
 	
 		return rest_ensure_response( $data );
 	}
