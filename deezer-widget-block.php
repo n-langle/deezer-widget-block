@@ -46,10 +46,10 @@ class DeezerWidgetBlock {
 
 		wp_add_inline_script(
 			'nlangle-deezer-widget-block-editor-script',
-			'const deezerWidgetBlockData = ' . json_encode(
+			'const deezerWidgetBlockData = ' . wp_json_encode(
 				[
-					'restSearchUrl' => rest_url( '/deezer-widget-block/v1/search' ),
-					'nonce'         => wp_create_nonce( 'wp_rest' ),
+					'restSearchUrl' => esc_url( rest_url( '/deezer-widget-block/v1/search' ) ),
+					'nonce'         => esc_attr( wp_create_nonce( 'wp_rest' ) ),
 				]
 			) . ';',
 			'before'
