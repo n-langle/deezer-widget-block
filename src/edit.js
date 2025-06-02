@@ -97,28 +97,28 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Deezer Widget', 'deezer-widget-block')} initialOpen={true}>
+				<PanelBody title={__('Deezer Widget', 'nlangle-deezer-widget-block')} initialOpen={true}>
 					<RadioControl
-						label={__('Theme', 'deezer-widget-block')}
+						label={__('Theme', 'nlangle-deezer-widget-block')}
 						selected={attributes.theme}
 						options={[
-							{ label: __('Auto', 'deezer-widget-block'), value: 'auto' },
-							{ label: __('Dark', 'deezer-widget-block'), value: 'dark' },
-							{ label: __('Light', 'deezer-widget-block'), value: 'light' },
+							{ label: __('Auto', 'nlangle-deezer-widget-block'), value: 'auto' },
+							{ label: __('Dark', 'nlangle-deezer-widget-block'), value: 'dark' },
+							{ label: __('Light', 'nlangle-deezer-widget-block'), value: 'light' },
 						]}
 						onChange={(theme) => setAttributes({ theme })}
 					/>
 					<RadioControl
-						label={__('Show tracklist', 'deezer-widget-block')}
+						label={__('Show tracklist', 'nlangle-deezer-widget-block')}
 						selected={attributes.showTracklist}
 						options={[
-							{ label: __('Yes', 'deezer-widget-block'), value: 'yes' },
-							{ label: __('No', 'deezer-widget-block'), value: 'no' },
+							{ label: __('Yes', 'nlangle-deezer-widget-block'), value: 'yes' },
+							{ label: __('No', 'nlangle-deezer-widget-block'), value: 'no' },
 						]}
 						onChange={(showTracklist) => setAttributes({ showTracklist })}
 					/>
 					<RangeControl
-						label={__('Height', 'deezer-widget-block')}
+						label={__('Height', 'nlangle-deezer-widget-block')}
 						value={attributes.height}
 						onChange={(height) => setAttributes({ height })}
 						min={150}
@@ -134,7 +134,7 @@ export default function Edit({ attributes, setAttributes }) {
 						controls={[
 							{
 								icon: 'edit',
-								title: __('Edit', 'deezer-widget-block'),
+								title: __('Edit', 'nlangle-deezer-widget-block'),
 								onClick: () => setIsEditing(true),
 							},
 						]}
@@ -148,15 +148,15 @@ export default function Edit({ attributes, setAttributes }) {
 						<div className="wp-block-nlangle-deezer-widget__form">
 							<div className="wp-block-nlangle-deezer-widget__form-row">
 								<SelectControl
-									label={__('Filter', 'deezer-widget-block')}
+									label={__('Filter', 'nlangle-deezer-widget-block')}
 									value={connection}
 									options={[
-										{ label: __('Default', 'deezer-widget-block'), value: '' },
-										{ label: __('Album', 'deezer-widget-block'), value: 'album' },
-										{ label: __('Artist', 'deezer-widget-block'), value: 'artist' },
-										{ label: __('Playlist', 'deezer-widget-block'), value: 'playlist' },
-										{ label: __('Podcast', 'deezer-widget-block'), value: 'podcast' },
-										{ label: __('Track', 'deezer-widget-block'), value: 'track' },
+										{ label: __('Default', 'nlangle-deezer-widget-block'), value: '' },
+										{ label: __('Album', 'nlangle-deezer-widget-block'), value: 'album' },
+										{ label: __('Artist', 'nlangle-deezer-widget-block'), value: 'artist' },
+										{ label: __('Playlist', 'nlangle-deezer-widget-block'), value: 'playlist' },
+										{ label: __('Podcast', 'nlangle-deezer-widget-block'), value: 'podcast' },
+										{ label: __('Track', 'nlangle-deezer-widget-block'), value: 'track' },
 									]}
 									onChange={onConnectionChange}
 									__next40pxDefaultSize
@@ -164,8 +164,8 @@ export default function Edit({ attributes, setAttributes }) {
 								/>
 								<div className="wp-block-nlangle-deezer-widget__form-search">
 									<TextControl
-										label={__('Search', 'deezer-widget-block')}
-										placeholder={__('Rick Astley', 'deezer-widget-block')}
+										label={__('Search', 'nlangle-deezer-widget-block')}
+										placeholder={__('Rick Astley', 'nlangle-deezer-widget-block')}
 										value={searchQuery}
 										onChange={onInputSearchChange}
 									/>
@@ -180,26 +180,26 @@ export default function Edit({ attributes, setAttributes }) {
 							</div>
 							<div className="wp-block-nlangle-deezer-widget__form-row">
 								<TextControl
-									label={__('Deezer url', 'deezer-widget-block')}
-									placeholder={__('https://www.deezer.com/us/artist/6160', 'deezer-widget-block')}
+									label={__('Deezer url', 'nlangle-deezer-widget-block')}
+									placeholder={__('https://www.deezer.com/us/artist/6160', 'nlangle-deezer-widget-block')}
 									value={attributes.deezerUrl}
 									onChange={onInputDeezerUrlChange}
 								/>
 								{attributes.deezerUrl && !isValidDeezerUrl(attributes.deezerUrl) ? (
-									<p className="wp-block-nlangle-deezer-widget__form-instruction">{__('Invalid Deezer url', 'deezer-widget-block')}</p>
+									<p className="wp-block-nlangle-deezer-widget__form-instruction">{__('Invalid Deezer url', 'nlangle-deezer-widget-block')}</p>
 								) : (
 									<p className="wp-block-nlangle-deezer-widget__form-instruction">
-										{__('Supported contents: Album, Playlist, Track, Artist, Podcast, Episode', 'deezer-widget-block')}
+										{__('Supported contents: Album, Playlist, Track, Artist, Podcast, Episode', 'nlangle-deezer-widget-block')}
 									</p>
 								)}
 							</div>
 							<div className="wp-block-nlangle-deezer-widget__form-row">
 								<button className="wp-block-nlangle-deezer-widget__form-submit" onClick={onFormSubmit}>
-									{__('Embed', 'deezer-widget-block')}
+									{__('Embed', 'nlangle-deezer-widget-block')}
 								</button>
 							</div>
 							<p className="wp-block-nlangle-deezer-widget__mention">
-								{__('This block uses the Deezer API and Deezer logo but is not endorsed or certified by Deezer.', 'deezer-widget-block')}
+								{__('This block uses the Deezer API and Deezer logo but is not endorsed or certified by Deezer.', 'nlangle-deezer-widget-block')}
 							</p>
 						</div>
 					</>

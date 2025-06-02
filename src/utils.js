@@ -5,7 +5,7 @@
  */
 export const setBlockClassName = (blockProps) => {
 	if (blockProps.className) {
-		blockProps.className = blockProps.className.replace('wp-block-nlangle-deezer-widget-block', 'wp-block-nlangle-deezer-widget');
+		blockProps.className = blockProps.className.replace('wp-block-nlangle-nlangle-deezer-widget-block', 'wp-block-nlangle-deezer-widget');
 	}
 };
 

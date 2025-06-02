@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deezer Widget Block 0.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/deezer-widget-block\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/nlangle-deezer-widget-block\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -12,25 +12,25 @@ msgstr ""
 "POT-Creation-Date: 2025-05-30T07:23:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: deezer-widget-block\n"
+"X-Domain: nlangle-deezer-widget-block\n"
 
 #. Plugin Name of the plugin
-#: deezer-widget-block.php
+#: nlangle-deezer-widget-block.php
 msgid "Deezer Widget Block"
 msgstr ""
 
 #. Description of the plugin
-#: deezer-widget-block.php
+#: nlangle-deezer-widget-block.php
 msgid "Deezer widget block for Gutenberg"
 msgstr ""
 
 #. Author of the plugin
-#: deezer-widget-block.php
+#: nlangle-deezer-widget-block.php
 msgid "nlangle"
 msgstr ""
 
 #. Author URI of the plugin
-#: deezer-widget-block.php
+#: nlangle-deezer-widget-block.php
 msgid "https://github.com/n-langle"
 msgstr ""
 

@@ -2,15 +2,15 @@
 /**
  * Plugin Name:       NLangle Deezer Widget Block
  * Description:       A WordPress block for embedding Deezer music content. This plugin is not affiliated with, authorized, maintained, sponsored, or endorsed by Deezer or any of its affiliates or subsidiaries.
- * Version:           0.1.4
+ * Version:           0.1.0
  * Requires at least: 6.4
  * Requires PHP:      7.4
  * Author:            nlangle
  * Author URI:        https://github.com/n-langle
- * Repository:        https://github.com/n-langle/deezer-widget-block
+ * Repository:        https://github.com/n-langle/nlangle-deezer-widget-block
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       deezer-widget-block
+ * Text Domain:       nlangle-deezer-widget-block
  *
  * @package CreateBlock
  */
@@ -48,7 +48,7 @@ class DeezerWidgetBlock {
 			'nlangle-deezer-widget-editor-script',
 			'const deezerWidgetBlockData = ' . wp_json_encode(
 				[
-					'restSearchUrl' => esc_url( rest_url( '/deezer-widget-block/v1/search' ) ),
+					'restSearchUrl' => esc_url( rest_url( '/nlangle-deezer-widget-block/v1/search' ) ),
 					'nonce'         => wp_create_nonce( 'wp_rest' ),
 				]
 			) . ';',
@@ -61,7 +61,7 @@ class DeezerWidgetBlock {
 	 */
 	public function rest_api_init(): void {
 		register_rest_route(
-			'deezer-widget-block/v1',
+			'nlangle-deezer-widget-block/v1',
 			'/search',
 			[
 				'methods'             => 'GET',
