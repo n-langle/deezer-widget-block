@@ -10,7 +10,7 @@ import { useState } from '@wordpress/element';
  * Internal dependencies
  */
 import './editor.scss';
-import { isValidDeezerUrl, setBlockClassName } from './utils';
+import { isValidDeezerUrl } from './utils';
 import { DeezerHorizontalLockup } from './Icons';
 import DeezerWidget from './DeezerWidget';
 import CardArtist from './CardArtist';
@@ -94,8 +94,6 @@ export default function Edit({ attributes, setAttributes }) {
 		}
 	};
 
-	setBlockClassName(blockProps);
-
 	return (
 		<>
 			<InspectorControls>
@@ -147,8 +145,8 @@ export default function Edit({ attributes, setAttributes }) {
 				{isEditing || !isValidDeezerUrl(attributes.deezerUrl) ? (
 					<>
 						<DeezerHorizontalLockup />
-						<div className="wp-block-deezer-widget__form">
-							<div className="wp-block-deezer-widget__form-row">
+						<div className="wp-block-nlangle-deezer-widget__form">
+							<div className="wp-block-nlangle-deezer-widget__form-row">
 								<SelectControl
 									label={__('Filter', 'deezer-widget-block')}
 									value={connection}
@@ -164,7 +162,7 @@ export default function Edit({ attributes, setAttributes }) {
 									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 								/>
-								<div className="wp-block-deezer-widget__form-search">
+								<div className="wp-block-nlangle-deezer-widget__form-search">
 									<TextControl
 										label={__('Search', 'deezer-widget-block')}
 										placeholder={__('Rick Astley', 'deezer-widget-block')}
@@ -172,7 +170,7 @@ export default function Edit({ attributes, setAttributes }) {
 										onChange={onInputSearchChange}
 									/>
 									{searchResults.data && searchResults.data.length > 0 && (
-										<ul className="wp-block-deezer-widget__search-results">
+										<ul className="wp-block-nlangle-deezer-widget__search-results">
 											{searchResults.data.map((result) => (
 												<li key={result.id}>{getCard(result)}</li>
 											))}
@@ -180,7 +178,7 @@ export default function Edit({ attributes, setAttributes }) {
 									)}
 								</div>
 							</div>
-							<div className="wp-block-deezer-widget__form-row">
+							<div className="wp-block-nlangle-deezer-widget__form-row">
 								<TextControl
 									label={__('Deezer url', 'deezer-widget-block')}
 									placeholder={__('https://www.deezer.com/us/artist/6160', 'deezer-widget-block')}
@@ -188,17 +186,21 @@ export default function Edit({ attributes, setAttributes }) {
 									onChange={onInputDeezerUrlChange}
 								/>
 								{attributes.deezerUrl && !isValidDeezerUrl(attributes.deezerUrl) ? (
-									<p className="wp-block-deezer-widget__form-instruction">{__('Invalid Deezer url', 'deezer-widget-block')}</p>
+									<p className="wp-block-nlangle-deezer-widget__form-instruction">{__('Invalid Deezer url', 'deezer-widget-block')}</p>
 								) : (
-									<p className="wp-block-deezer-widget__form-instruction">{__('Supported contents: Album, Playlist, Track, Artist, Podcast, Episode', 'deezer-widget-block')}</p>
+									<p className="wp-block-nlangle-deezer-widget__form-instruction">
+										{__('Supported contents: Album, Playlist, Track, Artist, Podcast, Episode', 'deezer-widget-block')}
+									</p>
 								)}
 							</div>
-							<div className="wp-block-deezer-widget__form-row">
-								<button className="wp-block-deezer-widget__form-submit" onClick={onFormSubmit}>
+							<div className="wp-block-nlangle-deezer-widget__form-row">
+								<button className="wp-block-nlangle-deezer-widget__form-submit" onClick={onFormSubmit}>
 									{__('Embed', 'deezer-widget-block')}
 								</button>
 							</div>
-							<p className="wp-block-deezer-widget__mention">{__('This block uses the Deezer API and Deezer logo but is not endorsed or certified by Deezer.', 'deezer-widget-block')}</p>
+							<p className="wp-block-nlangle-deezer-widget__mention">
+								{__('This block uses the Deezer API and Deezer logo but is not endorsed or certified by Deezer.', 'deezer-widget-block')}
+							</p>
 						</div>
 					</>
 				) : (

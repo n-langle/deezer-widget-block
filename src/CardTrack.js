@@ -9,16 +9,16 @@ import { getAlbumUrl } from './utils';
 
 export default function CardTrack({ result, setDeezerUrl }) {
 	return (
-		<div className="wp-block-deezer-widget__card wp-block-deezer-widget__card--track">
+		<div className="wp-block-nlangle-deezer-widget__card wp-block-nlangle-deezer-widget__card--track">
 			<img src={result.album.cover_small} alt={result.album.title} />
-			<div className="wp-block-deezer-widget__card-content">
-				<button className="wp-block-deezer-widget__card-title" onClick={() => setDeezerUrl(result.link)}>
+			<div className="wp-block-nlangle-deezer-widget__card-content">
+				<button className="wp-block-nlangle-deezer-widget__card-title" onClick={() => setDeezerUrl(result.link)}>
 					{result.title}
 				</button>
-				<button className="wp-block-deezer-widget__card-artist" onClick={() => setDeezerUrl(result.artist.link)}>
+				<button className="wp-block-nlangle-deezer-widget__card-artist" onClick={() => setDeezerUrl(result.artist.link)}>
 					{result.artist.name}
 				</button>
-				<button className="wp-block-deezer-widget__card-album" onClick={() => setDeezerUrl(getAlbumUrl(result.album.id))}>
+				<button className="wp-block-nlangle-deezer-widget__card-album" onClick={() => setDeezerUrl(getAlbumUrl(result.album.id))}>
 					{result.album.title}
 				</button>
 			</div>

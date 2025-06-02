@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       Deezer Widget Block
- * Description:       Deezer widget block for Gutenberg
- * Version:           0.1.3
+ * Plugin Name:       NLangle Deezer Widget Block
+ * Description:       A WordPress block for embedding Deezer music content. This plugin is not affiliated with, authorized, maintained, sponsored, or endorsed by Deezer or any of its affiliates or subsidiaries.
+ * Version:           0.1.4
  * Requires at least: 6.4
  * Requires PHP:      7.4
  * Author:            nlangle
@@ -45,7 +45,7 @@ class DeezerWidgetBlock {
 		register_block_type( __DIR__ . '/build' );
 
 		wp_add_inline_script(
-			'nlangle-deezer-widget-block-editor-script',
+			'nlangle-deezer-widget-editor-script',
 			'const deezerWidgetBlockData = ' . wp_json_encode(
 				[
 					'restSearchUrl' => esc_url( rest_url( '/deezer-widget-block/v1/search' ) ),

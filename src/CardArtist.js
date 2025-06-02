@@ -7,10 +7,10 @@
 
 export default function CardArtist({ result, setDeezerUrl }) {
 	return (
-		<div className="wp-block-deezer-widget__card wp-block-deezer-widget__card--artist">
+		<div className="wp-block-nlangle-deezer-widget__card wp-block-nlangle-deezer-widget__card--artist">
 			<img src={result.picture_small} alt={result.name} />
-			<div className="wp-block-deezer-widget__card-content">
-				<button className="wp-block-deezer-widget__card-title" onClick={() => setDeezerUrl(result.link)}>
+			<div className="wp-block-nlangle-deezer-widget__card-content">
+				<button className="wp-block-nlangle-deezer-widget__card-title" onClick={() => setDeezerUrl(result.link)}>
 					{result.name}
 				</button>
 			</div>
