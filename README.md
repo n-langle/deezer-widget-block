@@ -1,10 +1,12 @@
-# Deezer Widget Block
+# NLangle Deezer Widget Block
 
-![ Deezer Widget Block ](https://github.com/n-langle/deezer-widget-block/blob/develop/.wordpress-org/banner-1544x500.png)
+![ NLangle Deezer Widget Block ](https://github.com/n-langle/deezer-widget-block/blob/develop/.wordpress-org/banner-1544x500.png)
 
 ## Description
 
-The Deezer Widget Block allows you to easily embed Deezer music players into your WordPress posts and pages using the block editor. Simply paste a Deezer URL for an album, playlist, track, artist or podcast and the block will display an interactive player widget.
+A WordPress block for embedding Deezer music players into your content. This plugin is not affiliated with, authorized, maintained, sponsored, or endorsed by Deezer or any of its affiliates or subsidiaries.
+
+The NLangle Deezer Widget Block allows you to easily embed Deezer music players into your WordPress posts and pages using the block editor. Simply paste a Deezer URL for an album, playlist, track, artist or podcast and the block will display an interactive player widget.
 
 ### Features:
 * Supports embedding albums, playlists, tracks, artists and podcasts
@@ -34,6 +36,9 @@ Yes.
 ![screenshot-1](https://github.com/n-langle/deezer-widget-block/blob/develop/.wordpress-org/screenshot-1.gif)
 
 ## Changelog
+
+### 0.1.4
+* Ownership issue, rename block
 
 ### 0.1.3
 * Fix external service documentation, cookie and local storage disclosure, variable escaping.

@@ -9,7 +9,7 @@ import { useBlockProps } from '@wordpress/block-editor';
 /**
  * Internal dependencies
  */
-import { setBlockClassName, isValidDeezerUrl } from './utils';
+import { isValidDeezerUrl } from './utils';
 import DeezerWidget from './DeezerWidget';
 
 /**
@@ -25,8 +25,6 @@ import DeezerWidget from './DeezerWidget';
  */
 export default function save({ attributes }) {
 	const blockProps = useBlockProps.save();
-
-	setBlockClassName(blockProps);
 
 	return (
 		<>
