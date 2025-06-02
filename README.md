@@ -1,6 +1,6 @@
 # NLangle Deezer Widget Block
 
-![ NLangle Deezer Widget Block ](https://github.com/n-langle/deezer-widget-block/blob/develop/.wordpress-org/banner-1544x500.png)
+![ NLangle Deezer Widget Block ](https://github.com/n-langle/nlangle-deezer-widget-block/blob/develop/.wordpress-org/banner-1544x500.png)
 
 ## Description
 
@@ -20,7 +20,7 @@ This block makes it easy to share music from Deezer's extensive catalog directly
 
 ## Installation
 
-1. Upload the plugin files to the `/wp-content/plugins/deezer-widget-block` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/nlangle-deezer-widget-block` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
 
@@ -33,21 +33,9 @@ Yes.
 ## Screenshots
 
 1. Example of the plugin in action
-![screenshot-1](https://github.com/n-langle/deezer-widget-block/blob/develop/.wordpress-org/screenshot-1.gif)
+![screenshot-1](https://github.com/n-langle/nlangle-deezer-widget-block/blob/develop/.wordpress-org/screenshot-1.gif)
 
 ## Changelog
-
-### 0.1.4
-* Ownership issue, rename block
-
-### 0.1.3
-* Fix external service documentation, cookie and local storage disclosure, variable escaping.
-
-### 0.1.2
-* Fix nonce control
-
-### 0.1.1
-* Fix copyright and search field
 
 ### 0.1.0
 * Release
